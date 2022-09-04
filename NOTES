@@ -1,0 +1,37 @@
+https://codepen.io/matt-west/pen/DpmMgE
+
+yay -S speech-dispatcher
+
+---
+
+yay -S pico-tts alsa-utils
+consider speech-dispatcher later
+
+echo 172 | pico-tts -l de-DE | aplay --rate=16000 --channels=1 --format=S16_LE
+echo 172 | pico-tts -l de-DE | aplay -q -f S16_LE -r 16
+echo 172 | pico-tts -l de-DE | paplay -p --format=s16le --rate=16000
+echo 172 | pico-tts -l de-DE > /tmp/number-trainer.wav; paplay -p --format=s16le --rate=16000 /tmp/number-trainer.wav; rm /tmp/number-trainer.wav
+
+TODO:
+- Start screen
+    - Best score
+    - Modes (presets)
+        - Easy: 0-99, 5 seconds
+        - Medium: 0-999, 5 seconds
+        - Hard: 0-9999, 3 seconds
+    - Number range, seconds, lives
+    - Language combobox (if default speech is selected)
+    - Start Button
+    - Settings
+        - Radio buttons
+            - Default speech command
+                - Help button telling about dependencies
+            - Custom speech command
+                - Command entry
+            - Test button
+            - Reset best score
+- Main screen
+    - Pause
+    - Give up
+- Game over screen
+    - Go to start screen
