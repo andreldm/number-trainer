@@ -1,19 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Number Trainer</title>
-    <link rel="stylesheet" href="/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Number Trainer</title>
+  <link rel="stylesheet" href="/styles.css">
 </head>
+
 <body>
-    <div id="root">
-        Loading...
-        <noscript>JavaScript is required.</noscript>
+  <noscript>JavaScript is required.</noscript>
+  <div id="app" v-cloak>
+    <div class="hearts">
+      <span v-show="lives > 0" class="heart">&#9829;</span>
+      <span v-show="lives > 1" class="heart">&#9829;</span>
+      <span v-show="lives > 2" class="heart">&#9829;</span>
     </div>
-    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script type="text/babel" src="/index.js"></script>
+    <button class="start-btn" v-bind:disabled="timeLeft > 0" v-on:click="start()">Start</button>
+    <progress class="progress-bar" v-bind:class="{ hidden: timeLeft == 0 }" v-bind:value="timeLeft - 1" max="5">
+    </progress>
+    <input class="number-input" type="number" v-model="guess" @keyup.enter="check()"></input>
+  </div>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+  <script type="module" src="index.js"></script>
 </body>
+
 </html>
