@@ -1,6 +1,7 @@
 {
     "scripts": {
-        "start": "browser-sync start --server 'src' --files 'src' --single"
+        "start": "browser-sync start --server 'src' --files 'src' --single",
+        "deploy": "git subtree push --prefix src origin gh-pages"
     },
     "devDependencies": {
         "browser-sync": "^2.27.10"
