@@ -8,12 +8,15 @@
   <link rel="stylesheet" href="./styles.css">
 
   <script src="https://unpkg.com/vue@3"></script>
+  <script src="https://unpkg.com/vue-router@4"></script>
   <script src="./main.js" type="module"></script>
 </head>
 
 <body>
   <noscript>JavaScript is required.</noscript>
-  <div id="app" v-cloak></div>
+  <div id="app" v-cloak>
+    <router-view></router-view>
+  </div>
 </body>
 
 </html>
