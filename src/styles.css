@@ -4,15 +4,6 @@ body {
   font-family: system;
 }
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-input[type=number] {
-  -moz-appearance: textfield;
-}
-
 #app {
   border: 3px solid #2d2d2d;
   padding: 1rem;
@@ -34,10 +25,6 @@ input[type=number] {
 }
 .heart {
   color: #911;
-}
-
-.number-input {
-
 }
 
 .progress-bar {
