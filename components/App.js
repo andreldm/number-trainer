@@ -58,6 +58,6 @@ export default {
             <Lives :lives="lives"/>
             <button class="start-btn" v-bind:disabled="timeLeft > 0" v-on:click="start()">Start</button>
             <progress class="progress-bar" v-bind:class="{ hidden: timeLeft == 0 }" v-bind:value="timeLeft - 1" max="5"></progress>
-            <input class="number-input" type="number" v-model="guess" @keyup.enter="check()">
+            <input inputmode="numeric" pattern="[0-9]*" type="text" class="number-input" v-model="guess" @keyup.enter="check()">
         `
 };
