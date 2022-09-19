@@ -25,10 +25,55 @@ body {
 }
 .heart {
   color: #911;
+.button {
+  cursor: pointer;
+  border: none;
+  border-radius: 0.3rem;
+  outline: none;
+  background: #42b7c4;
+  color: #ffffff;
+  padding: 0.5rem;
+  min-width: 8rem;
+  font-size: 2rem;
+  font-weight: 600;
+
+  -webkit-transition: background-color 0.25s ease-out;
+  -moz-transition: background-color 0.25s ease-out;
+  -o-transition: background-color 0.25s ease-out;
+  transition: background-color 0.25s ease-out;
 }
 
-.progress-bar {
+.button:disabled {
+  background: #c0c0c0;
+  cursor: not-allowed;
+}
 
+.button:hover:enabled {
+  background-color: #56d0dd;
+}
+
+.button-group .button {
+  border-radius: 0;
+  font-size: 1.5rem;
+  min-width: 6.5rem;
+}
+
+.button-group .button:first-child {
+  border-top-left-radius: 0.3rem;
+  border-bottom-left-radius: 0.3rem;
+}
+
+.button-group .button:last-child {
+  border-top-right-radius: 0.3rem;
+  border-bottom-right-radius: 0.3rem;
+}
+
+.button-group .button.selected {
+  background-color: #2b97a3;
+}
+
+.small {
+  font-size: 0.5em;
 }
 
 [v-cloak] {
