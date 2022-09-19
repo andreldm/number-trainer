@@ -56,7 +56,7 @@ export default {
     template:
         `
             <Lives :lives="lives"/>
-            <button class="start-btn" v-bind:disabled="timeLeft > 0" v-on:click="start()">Start</button>
+            <button class="button circle play" v-bind:disabled="timeLeft > 0" v-on:click="start()"></button>
             <progress class="progress-bar" v-bind:class="{ hidden: timeLeft == 0 }" v-bind:value="timeLeft - 1" max="5"></progress>
             <input inputmode="numeric" pattern="[0-9]*" type="text" class="number-input" v-model="guess" @keyup.enter="check()">
         `
