@@ -87,8 +87,35 @@ body {
   background-color: #2b97a3;
 }
 
+.button.circle {
+  border-radius: 50%;
+  width: 8rem;
+  height: 8rem;
+}
+
+.button.circle.play {
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIGhlaWdodD0iMjgiIHdpZHRoPSIyNCIgaWQ9InN2ZzEzIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPiA8ZGVmcyBpZD0iZGVmczciPiA8c3R5bGUgdHlwZT0idGV4dC9jc3MiIGlkPSJzdHlsZTIiPiAub3V0bGluZXtzdHJva2U6bm9uZTtzdHJva2Utd2lkdGg6MH0gPC9zdHlsZT4gPGcgaWQ9ImhlYXJ0Ij4gPHBhdGggZD0iTTAgMjAwVjBoMjAwYTEwMCAxMDAgOTAgMCAxIDAgMjAwIDEwMCAxMDAgOTAgMCAxLTIwMCAweiIgaWQ9InBhdGg0Ii8+IDwvZz4gPC9kZWZzPiA8cGF0aCBzdHlsZT0iZmlsbDojZmZmIiBpZD0icGF0aDExMzAiIGQ9Ik0xOC42MzcgNC4yODEtMS44NjEgMTYuMTE2di0yMy42N3oiIHRyYW5zZm9ybT0ibWF0cml4KDEuMTcwODYgMCAwIDEuMTgzIDIuMTc5IDguOTM1KSIvPiA8L3N2Zz4=");
+  background-position: center center;
+  background-size: 2.6rem;
+  background-repeat: no-repeat;
+}
+
 .small {
   font-size: 0.5em;
+}
+
+.number-input {
+  padding: 0.5rem 0;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #056d96;
+  border-width: 0.3rem;
+  border-style: solid;
+  border-color: #42b7c4;
+  border-radius: 0.8rem;
+  width: 16rem;
+  text-align: center;
+  outline: transparent;
 }
 
 [v-cloak] {
