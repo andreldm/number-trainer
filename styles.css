@@ -13,12 +13,12 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.4rem;
+  gap: 1rem;
   position: relative;
 }
 
 .hidden {
-  visibility: hidden;
+  opacity: 0;
 }
 
 .hearts {
@@ -117,6 +117,28 @@ body {
   text-align: center;
   outline: transparent;
 }
+
+.progress {
+  min-width: 16rem;
+  border-width: 0.2rem;
+  color: #42b7c4;
+  background-color: #ffffff;
+  border-style: solid;
+  border-color: #42b7c4;
+  border-radius: 0.8rem;
+
+  -webkit-appearance: none;
+  appearance: none;
+
+  -webkit-transition: opacity 0.25s ease-out;
+  -moz-transition: opacity 0.25s ease-out;
+  -o-transition: opacity 0.25s ease-out;
+  transition: opacity 0.25s ease-out;
+}
+.progress::-moz-progress-bar { background: #42b7c4; }
+.progress::-webkit-progress-bar { background: #ffffff; border-radius: 0.8rem; }
+.progress::-webkit-progress-value { background: #42b7c4; }
+
 
 [v-cloak] {
   display: none !important;
