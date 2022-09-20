@@ -1,3 +1,10 @@
+@keyframes shake {
+  10%, 90% { transform: translate(-1px, 0); }
+  20%, 80% { transform: translate(2px, 0); }
+  30%, 50%, 70% { transform: translate(-2px, 0); }
+  40%, 60% { transform: translate(1px, 0); }
+}
+
 body {
   background-color: #9bff7a;
   margin: 0;
@@ -50,7 +57,7 @@ body {
   display: inline-block;
 }
 .heart.broken {
-  animation: shake 0.8s cubic-bezier(.36,.07,.19,.97) both;
+  animation: shake 0.8s;
   transform: translate(0, 0);
 
   -webkit-transition: filter 0.8s ease-out;
@@ -59,11 +66,6 @@ body {
   transition: filter 0.8s ease-out;
   filter: grayscale(100%) brightness(350%);
 }
-@keyframes shake {
-  10%, 90% { transform: translate(-1px, 0); }
-  20%, 80% { transform: translate(2px, 0); }
-  30%, 50%, 70% { transform: translate(-2px, 0); }
-  40%, 60% { transform: translate(1px, 0); }
 }
 
 .button {
@@ -142,6 +144,22 @@ body {
   width: 16rem;
   text-align: center;
   outline: transparent;
+
+  -webkit-transition: background-color 0.5s ease-out;
+  -moz-transition: background-color 0.5s ease-out;
+  -o-transition: background-color 0.5s ease-out;
+  transition: background-color 0.5s ease-out;
+  background-color: #ffffff;
+}
+.number-input.error {
+  animation: shake 0.5s;
+  transform: translate(0, 0);
+
+  -webkit-transition: background-color 0.5s ease-out;
+  -moz-transition: background-color 0.5s ease-out;
+  -o-transition: background-color 0.5s ease-out;
+  transition: background-color 0.5s ease-out;
+  background-color: #ffb3b3;
 }
 
 .progress {
