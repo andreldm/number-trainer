@@ -19,8 +19,9 @@ Simple educational app to practice spoken number comprehension.
         - [ ] Rate
         - [ ] Test Button
         - [ ] Reset scores
-    - [ ] Start Button
+    - [x] Start Button
 - [x] Main screen
+    - [ ] Score
     - [x] Lives
     - [x] Start
     - [x] Timer
