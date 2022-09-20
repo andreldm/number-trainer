@@ -4,15 +4,15 @@ Simple educational app to practice spoken number comprehension.
 
 ### TODO
 
-- [ ] Start screen
-    - [ ] Modes (presets)
-        - [ ] Easy: 0-99, 5 seconds
-        - [ ] Medium: 0-999, 5 seconds
-        - [ ] Hard: 0-9999, 3 seconds
+- [x] Start screen
+    - [x] Modes (presets)
+        - [x] Easy: 0-99
+        - [x] Medium: 0-999
+        - [x] Hard: 0-9999
         - [ ] Custom
     - [ ] Top 3 scores for each mode
         - [ ] Score per language
-    - [ ] Voice combobox
+    - [x] Voice combobox
     - [ ] Settings in an accordion
         - [ ] Volume
         - [ ] Pitch
@@ -24,7 +24,7 @@ Simple educational app to practice spoken number comprehension.
     - [x] Lives
     - [x] Start
     - [x] Timer
-    - [ ] Give up
+    - [x] Back button
 - [ ] Game over screen
     - [ ] Show score/top scores
     - [ ] Go to start screen
