@@ -26,6 +26,10 @@ export default {
         if (--this.timeLeft == 0) {
           this.lives--;
           clearInterval(this.intervalId);
+
+          if (this.lives <= 0) {
+            this.$router.push(`/gameover/${this.score}`);
+          }
         }
       },
       getNumber() {
@@ -61,7 +65,7 @@ export default {
       },
       check() {
         console.log(this.guess == this.number);
-  
+
         if (this.guess == this.number) {
           this.score++;
         } else {
@@ -69,13 +73,23 @@ export default {
           this.error = true;
           setTimeout(() => this.error = false, 500);
         }
-  
+
         clearInterval(this.intervalId);
         this.guess = "";
-        this.start();
+
+        if (this.lives <= 0) {
+          this.$router.push(`/gameover/${this.score}`);
+        } else {
+          this.start();
+        }
       },
       back() {
-        this.$router.push('/');
+        clearInterval(this.intervalId);
+        if (this.score > 0) {
+          this.$router.push(`/gameover/${this.score}`);
+        } else {
+          this.$router.push('/');
+        }
       },
     },
     template:
