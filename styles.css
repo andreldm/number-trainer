@@ -103,6 +103,7 @@ body {
 
 .button-group .button {
   border-radius: 0;
+  margin: 0;
   font-size: 1.5rem;
   min-width: 6.5rem;
 }
