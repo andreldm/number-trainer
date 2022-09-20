@@ -13,6 +13,7 @@ export default {
     data() {
       return {
         lives: 3,
+        error: false,
         number: undefined,
         guess: undefined,
         intervalId: undefined,
@@ -61,6 +62,8 @@ export default {
   
         } else {
           this.lives--;
+          this.error = true;
+          setTimeout(() => this.error = false, 500);
         }
   
         clearInterval(this.intervalId);
@@ -74,9 +77,21 @@ export default {
     template:
         `
             <Lives :lives="lives"/>
-            <span class="back"  v-on:click="back()">&#10799;</span>
-            <button class="button circle play" v-bind:disabled="timeLeft > 0" v-on:click="start()"></button>
-            <input inputmode="numeric" pattern="[0-9]*" type="text" class="number-input" v-model="guess" @keyup.enter="check()">
-            <progress class="progress" v-bind:class="{ hidden: timeLeft == 0 }" v-bind:value="timeLeft - 1" max="5"></progress>
+            <span class="back"
+                  v-on:click="back()">&#10799;</span>
+            <button class="button circle play"
+                    v-bind:disabled="timeLeft > 0"
+                    v-on:click="start()"></button>
+            <input class="number-input"
+                   v-bind:class="{ error: error }"
+                   type="text"
+                   inputmode="numeric"
+                   pattern="[0-9]*"
+                   v-model="guess"
+                   @keyup.enter="check()">
+            <progress class="progress"
+                      v-bind:class="{ hidden: timeLeft == 0 }"
+                      v-bind:value="timeLeft - 1"
+                      max="5"></progress>
         `
 };
