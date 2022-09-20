@@ -45,11 +45,14 @@ export default {
         msg.pitch = 1;
         msg.voice = getVoice(this.voice);
   
+        msg.onend = (event) => {
+          this.tick();
+          this.intervalId = setInterval(this.tick, 1000);
+        };
+
         speechSynthesis.speak(msg);
         this.timeLeft = 6;
-        this.intervalId = setInterval(this.tick, 1000);
-  
-        document.querySelector(".number-input").focus()
+        document.querySelector(".number-input").focus();
       },
       check() {
         console.log(this.guess == this.number);
