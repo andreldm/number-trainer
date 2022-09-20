@@ -5,6 +5,9 @@ export default {
     components: {
         Lives,
     },
+    props: {
+      mode: String
+    },
     data() {
       return {
         lives: 3,
@@ -21,12 +24,20 @@ export default {
           clearInterval(this.intervalId);
         }
       },
+      getNumber() {
+        const max =
+          this.mode == 'easy' ? 99 :
+          this.mode == 'medium' ? 999 :
+          this.mode == 'hard' ? 9999 : 99;
+
+        const number = Math.floor(Math.random() * max);
+        console.log(number);
+
+        return number;
+      },
       start() {
-        this.number = Math.floor(Math.random() * 100);
-        console.log(this.number);
-  
         const msg = new SpeechSynthesisUtterance();
-        msg.text = this.number;
+        msg.text = this.number = this.getNumber();
         msg.volume = 100;
         msg.rate = 1;
         msg.pitch = 1;
