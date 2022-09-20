@@ -1,4 +1,5 @@
 import Lives from './Lives.js';
+import { getVoice } from '../util.js';
 
 export default {
     name: 'App',
@@ -6,7 +7,8 @@ export default {
         Lives,
     },
     props: {
-      mode: String
+      mode: String,
+      voice: String
     },
     data() {
       return {
@@ -41,10 +43,9 @@ export default {
         msg.volume = 100;
         msg.rate = 1;
         msg.pitch = 1;
-        msg.voice = speechSynthesis.getVoices().filter((v) => v.lang == 'en-US')[0];
+        msg.voice = getVoice(this.voice);
   
-        window.speechSynthesis.speak(msg);
-  
+        speechSynthesis.speak(msg);
         this.timeLeft = 6;
         this.intervalId = setInterval(this.tick, 1000);
   
