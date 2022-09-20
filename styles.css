@@ -21,11 +21,22 @@ body {
   opacity: 0;
 }
 
-.hearts {
+.back {
+  cursor: pointer;
   display: inline-block;
   position: absolute;
   top: 0;
   right: 0;
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: #444;
+}
+
+.hearts {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
   margin-top: 1rem;
 }
 
@@ -138,7 +149,6 @@ body {
 .progress::-moz-progress-bar { background: #42b7c4; }
 .progress::-webkit-progress-bar { background: #ffffff; border-radius: 0.8rem; }
 .progress::-webkit-progress-value { background: #42b7c4; }
-
 
 [v-cloak] {
   display: none !important;

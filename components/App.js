@@ -51,11 +51,15 @@ export default {
         clearInterval(this.intervalId);
         this.guess = "";
         this.start();
-      }
+      },
+      back() {
+        this.$router.push('/');
+      },
     },
     template:
         `
             <Lives :lives="lives"/>
+            <span class="back"  v-on:click="back()">&#10799;</span>
             <button class="button circle play" v-bind:disabled="timeLeft > 0" v-on:click="start()"></button>
             <input inputmode="numeric" pattern="[0-9]*" type="text" class="number-input" v-model="guess" @keyup.enter="check()">
             <progress class="progress" v-bind:class="{ hidden: timeLeft == 0 }" v-bind:value="timeLeft - 1" max="5"></progress>
