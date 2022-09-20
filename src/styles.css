@@ -66,6 +66,12 @@ body {
   transition: filter 0.8s ease-out;
   filter: grayscale(100%) brightness(350%);
 }
+
+.score {
+  color: #42b7c4;
+  font-size: 2rem;
+  font-family: monospace;
+  font-weight: 600;
 }
 
 .button {

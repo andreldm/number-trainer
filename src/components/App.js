@@ -13,6 +13,7 @@ export default {
     data() {
       return {
         lives: 3,
+        score: -1,
         error: false,
         number: undefined,
         guess: undefined,
@@ -45,6 +46,9 @@ export default {
         msg.rate = 1;
         msg.pitch = 1;
         msg.voice = getVoice(this.voice);
+
+        if (this.score < 0)
+          this.score = 0;
   
         msg.onend = (event) => {
           this.tick();
@@ -59,7 +63,7 @@ export default {
         console.log(this.guess == this.number);
   
         if (this.guess == this.number) {
-  
+          this.score++;
         } else {
           this.lives--;
           this.error = true;
@@ -93,5 +97,7 @@ export default {
                       v-bind:class="{ hidden: timeLeft == 0 }"
                       v-bind:value="timeLeft - 1"
                       max="5"></progress>
+            <div class="score"
+                 v-bind:class="{ hidden: score < 0 }">{{score}}</div>
         `
 };
