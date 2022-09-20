@@ -7,7 +7,7 @@ export default {
     },
     methods: {
       start() {
-        this.$router.push('/app');
+        this.$router.push(`/app/${this.mode}`);
       },
       setMode(mode) {
         this.mode = mode;
