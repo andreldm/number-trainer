@@ -150,6 +150,19 @@ body {
 .progress::-webkit-progress-bar { background: #ffffff; border-radius: 0.8rem; }
 .progress::-webkit-progress-value { background: #42b7c4; }
 
+.select {
+  min-width: 16rem;
+  -webkit-appearance: none;
+  appearance: none;
+  text-align-last:center;
+  border: 0.2rem solid #42b7c4;
+  border-radius: 0.3rem;
+  padding: 0.25em 0.5em;
+  font-size: 1.2rem;
+  cursor: pointer;
+  background-color: #ffffff;
+}
+
 [v-cloak] {
   display: none !important;
 }

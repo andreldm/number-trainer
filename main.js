@@ -3,7 +3,7 @@ import App from './components/App.js';
 
 const routes = [
   { path: '/', component: Menu },
-  { path: '/app/:mode', component: App, props: true }
+  { path: '/app/:mode/:voice', component: App, props: true }
 ];
 
 const router = VueRouter.createRouter({
