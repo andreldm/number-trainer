@@ -61,9 +61,12 @@ export default {
 
         speechSynthesis.speak(msg);
         this.timeLeft = 6;
-        document.querySelector(".number-input").focus();
+        setInterval(() => document.querySelector(".number-input").focus(), 1);
       },
       check() {
+        if (this.guess == "")
+          return;
+
         console.log(this.guess == this.number);
 
         if (this.guess == this.number) {
@@ -102,6 +105,7 @@ export default {
                     v-on:click="start()"></button>
             <input class="number-input"
                    v-bind:class="{ error: error }"
+                   v-bind:disabled="timeLeft <= 0"
                    type="text"
                    inputmode="numeric"
                    pattern="[0-9]*"

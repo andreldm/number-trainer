@@ -10,7 +10,7 @@ export default {
       }
     },
     mounted() {
-      this.voices = getVoices();
+      setTimeout(() => this.voices = getVoices(), 100);
     },
     methods: {
       start() {
