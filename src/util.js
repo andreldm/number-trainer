@@ -1,6 +1,5 @@
-export function getVoices() {
-  const voices = speechSynthesis.getVoices();
-  voices.sort((a, b) => {
+function sortVoices(voices) {
+  return voices.sort((a, b) => {
     if (a.lang < b.lang) return -1;
     if (a.lang > b.lang) return 1;
 
@@ -9,7 +8,18 @@ export function getVoices() {
 
     return 0;
   });
-  return voices;
+}
+
+export function getVoices(callback) {
+  const voices = speechSynthesis.getVoices();
+
+  if (typeof voices !== 'undefined' && voices.length > 0) {
+    callback(sortVoices(voices));
+  }
+
+  speechSynthesis.onvoiceschanged = function () {
+    callback(sortVoices(speechSynthesis.getVoices()));
+  };
 }
 
 export function getVoice(name) {
