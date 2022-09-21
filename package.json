@@ -1,9 +1,23 @@
 {
+    "name": "number-trainer",
+    "version": "0.0.0",
     "scripts": {
-        "start": "browser-sync start --server 'src' --files 'src' --single",
-        "deploy": "git subtree push --prefix src origin gh-pages"
+      "dev": "vite --host",
+      "build": "vite build",
+      "preview": "vite preview --port 4173",
+      "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
+    },
+    "dependencies": {
+      "vue": "^3.2.38",
+      "vue-router": "^4.1.5"
     },
     "devDependencies": {
-        "browser-sync": "^2.27.10"
+      "@rushstack/eslint-patch": "^1.1.4",
+      "@vitejs/plugin-vue": "^3.0.3",
+      "@vue/eslint-config-prettier": "^7.0.0",
+      "eslint": "^8.22.0",
+      "eslint-plugin-vue": "^9.3.0",
+      "prettier": "^2.7.1",
+      "vite": "^3.0.9"
     }
-}
+  }
