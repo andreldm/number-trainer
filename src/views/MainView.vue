@@ -1,6 +1,6 @@
 <script>
 import Lives from "../components/Lives.vue";
-import { getVoice } from "../util.js";
+import { getVoice, setFocus } from "../util.js";
 
 export default {
   name: "App",
@@ -65,8 +65,7 @@ export default {
 
       speechSynthesis.speak(msg);
       this.timeLeft = 6;
-      this.$nextTick(() => this.$refs.input.focus())
-      // setInterval(() => this.$refs.email.$el.focus(), 1);
+      this.$nextTick(() => setFocus(this.$refs.input));
     },
     check() {
       if (this.guess == "") return;
