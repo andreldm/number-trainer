@@ -21,34 +21,35 @@ Simple educational app to practice spoken number comprehension.
         - [ ] Reset scores
     - [x] Start Button
 - [x] Main screen
-    - [ ] Score
+    - [x] Score
     - [x] Lives
     - [x] Start
     - [x] Timer
     - [x] Back button
-- [ ] Game over screen
-    - [ ] Show score/top scores
-    - [ ] Go to start screen
+- [x] Game over screen
+    - [x] Show score
+    - [ ] Show top scores
+    - [x] Go to start screen
 
-## Project Setup
+### Project Setup
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+#### Compile and Hot-Reload for Development
 
 ```sh
 npm run dev
 ```
 
-### Compile and Minify for Production
+#### Compile and Minify for Production
 
 ```sh
 npm run build
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+#### Lint with [ESLint](https://eslint.org/)
 
 ```sh
 npm run lint
