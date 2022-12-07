@@ -14,7 +14,7 @@ export default {
   data() {
     return {
       lives: 3,
-      score: -1,
+      score: 0,
       error: false,
       number: undefined,
       guess: undefined,
@@ -58,7 +58,6 @@ export default {
       msg.pitch = 1;
       msg.voice = getVoice(this.voice);
 
-      if (this.score < 0) this.score = 0;
 
       msg.onend = (event) => {
         this.tick();
