@@ -192,6 +192,7 @@ body {
 
 .select {
   min-width: 16rem;
+  max-width: 18rem;
   -webkit-appearance: none;
   appearance: none;
   text-align-last:center;
