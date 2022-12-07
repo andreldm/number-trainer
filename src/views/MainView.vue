@@ -26,6 +26,8 @@ export default {
     tick() {
       if (--this.timeLeft == 0) {
         this.lives--;
+        this.error = true;
+        setTimeout(() => (this.error = false), 500);
         clearInterval(this.intervalId);
 
         if (this.lives <= 0) {
@@ -77,6 +79,7 @@ export default {
       } else {
         this.lives--;
         this.error = true;
+        this.timeLeft = 0;
         setTimeout(() => (this.error = false), 500);
       }
 
@@ -85,7 +88,7 @@ export default {
 
       if (this.lives <= 0) {
         this.$router.push(`/gameover/${this.score}`);
-      } else {
+      } else if (!this.error) {
         this.start();
       }
     },
