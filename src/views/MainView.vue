@@ -17,6 +17,7 @@ export default {
       lives: 3,
       score: 0,
       error: false,
+      maxNumber: undefined,
       number: undefined,
       guess: undefined,
       intervalId: undefined,
@@ -24,6 +25,14 @@ export default {
     };
   },
   mounted() {
+      this.maxNumber = (() => {
+        switch (this.mode) {
+          case "easy": return 99;
+          case "medium": return 999;
+          case "hard": return 9999;
+          default: return 99;
+        }})();
+
       this.speech = new SpeechSynthesisUtterance();
       this.speech.volume = 100;
       this.speech.rate = 1;
@@ -48,22 +57,10 @@ export default {
         }
       }
     },
-    getNumber() {
-      const max = (() => {
-        switch (this.mode) {
-          case "easy": return 99;
-          case "medium": return 999;
-          case "hard": return 9999;
-          default: return 99;
-        }})();
-
-      const number = Math.floor(Math.random() * max);
-      console.log(number);
-
-      return number;
-    },
     start() {
-      this.speech.text = this.number = this.getNumber();
+      this.speech.text = this.number = Math.floor(Math.random() * this.maxNumber);
+      console.log(this.number);
+
       speechSynthesis.speak(this.speech);
 
       this.timeLeft = 6;
