@@ -6,7 +6,7 @@ export default {
   data() {
     return {
       mode: undefined,
-      voice: "",
+      voice: localStorage.getItem('last-selected-voice') || '',
       voices: [],
     };
   },
@@ -21,6 +21,9 @@ export default {
       this.mode = mode;
     },
   },
+  watch: {
+    voice: (value) => { localStorage.setItem('last-selected-voice', value) }
+  }
 };
 </script>
 
