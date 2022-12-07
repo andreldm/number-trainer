@@ -27,6 +27,7 @@ export default {
       if (--this.timeLeft == 0) {
         this.lives--;
         this.error = true;
+        this.guess = "";
         setTimeout(() => (this.error = false), 500);
         clearInterval(this.intervalId);
 
@@ -70,27 +71,13 @@ export default {
       this.$nextTick(() => setFocus(this.$refs.input));
     },
     check() {
-      if (this.guess == "") return;
-
-      console.log(this.guess == this.number);
-
-      if (this.guess == this.number) {
-        this.score++;
-      } else {
-        this.lives--;
-        this.error = true;
-        this.timeLeft = 0;
-        setTimeout(() => (this.error = false), 500);
-      }
+      if (this.guess != this.number) return;
 
       clearInterval(this.intervalId);
-      this.guess = "";
 
-      if (this.lives <= 0) {
-        this.$router.push(`/gameover/${this.score}`);
-      } else if (!this.error) {
-        this.start();
-      }
+      this.score++;
+      this.guess = "";
+      this.start();
     },
     back() {
       clearInterval(this.intervalId);
@@ -121,7 +108,7 @@ export default {
     inputmode="numeric"
     pattern="[0-9]*"
     v-model="guess"
-    @keyup.enter="check()"
+    @keyup="check()"
   />
   <progress
     class="progress"
