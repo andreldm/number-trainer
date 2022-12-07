@@ -28,6 +28,8 @@ export default {
 </script>
 
 <template>
+  <h1 class="title">Number Trainer</h1>
+
   <span class="button-group">
     <button
       class="button"
@@ -72,6 +74,16 @@ export default {
 </template>
 
 <style>
+.title {
+  position: absolute;
+  top: 0;
+  margin-top: 3rem;
+  padding: 0;
+  color: #42b7c4;
+  font-size: 2.4rem;
+  font-weight: 600;
+}
+
 .button:hover:enabled {
   background-color: #56d0dd;
 }
