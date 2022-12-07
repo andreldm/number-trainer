@@ -70,3 +70,44 @@ export default {
     Start
   </button>
 </template>
+
+<style>
+.button:hover:enabled {
+  background-color: #56d0dd;
+}
+.button-group .button {
+  border-radius: 0;
+  margin: 0;
+  font-size: 1.5rem;
+  min-width: 6.5rem;
+}
+.button-group .button:first-child {
+  border-top-left-radius: 0.3rem;
+  border-bottom-left-radius: 0.3rem;
+}
+.button-group .button:last-child {
+  border-top-right-radius: 0.3rem;
+  border-bottom-right-radius: 0.3rem;
+}
+.button-group .button.selected {
+  background-color: #2b97a3;
+}
+
+.small {
+  font-size: 0.5em;
+}
+
+.select {
+  min-width: 16rem;
+  max-width: 18rem;
+  -webkit-appearance: none;
+  appearance: none;
+  text-align-last:center;
+  border: 0.2rem solid #42b7c4;
+  border-radius: 0.3rem;
+  padding: 0.25em 0.5em;
+  font-size: 1.2rem;
+  cursor: pointer;
+  background-color: #ffffff;
+}
+</style>

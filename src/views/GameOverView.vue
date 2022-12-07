@@ -18,3 +18,20 @@ export default {
   <div class="score">{{ score }}</div>
   <button class="button" v-on:click="menu()">Menu</button>
 </template>
+
+<style>
+.title {
+  margin: 0;
+  padding: 0;
+  color: #42b7c4;
+  font-size: 3rem;
+  font-weight: 600;
+}
+.subtitle {
+  margin: 0;
+  padding: 0;
+  color: #42b7c4;
+  font-size: 2rem;
+  font-weight: 600;
+}
+</style>
