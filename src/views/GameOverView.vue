@@ -21,10 +21,12 @@ export default {
 
 <style>
 .title {
-  margin: 0;
+  position: absolute;
+  top: 0;
+  margin-top: 3rem;
   padding: 0;
   color: #42b7c4;
-  font-size: 3rem;
+  font-size: 2.4rem;
   font-weight: 600;
 }
 .subtitle {
