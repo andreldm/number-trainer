@@ -46,16 +46,17 @@ export default {
   },
   methods: {
     tick() {
-      if (--this.timeLeft == 0) {
-        this.lives--;
-        this.error = true;
-        setTimeout(() => (this.error = false), 500);
-        clearInterval(this.intervalId);
+      if (--this.timeLeft > 0) return;
 
-        if (this.lives <= 0) {
-          this.$router.push(`/gameover/${this.score}`);
-        }
+      clearInterval(this.intervalId);
+
+      if (--this.lives <= 0) {
+        this.$router.push(`/gameover/${this.score}`);
+        return;
       }
+
+      this.error = true;
+      setTimeout(() => (this.error = false), 500);
     },
     start() {
       this.speech.text = this.number = Math.floor(Math.random() * this.maxNumber);
