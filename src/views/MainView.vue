@@ -49,16 +49,16 @@ export default {
       if (--this.timeLeft > 0) return;
 
       clearInterval(this.intervalId);
-
-      if (--this.lives <= 0) {
-        this.$router.push(`/gameover/${this.score}`);
-        return;
-      }
-
+      this.guess = this.number;
       this.error = true;
-      setTimeout(() => (this.error = false), 500);
+
+      if (--this.lives == 0) {
+        setTimeout(() => (this.$router.push(`/gameover/${this.score}`)), 3000);
+      }
     },
     start() {
+      this.guess = '';
+      this.error = false;
       this.speech.text = this.number = Math.floor(Math.random() * this.maxNumber);
       console.log(this.number);
 
@@ -71,9 +71,7 @@ export default {
       if (this.guess != this.number) return;
 
       clearInterval(this.intervalId);
-
       this.score++;
-      this.guess = "";
       this.start();
     },
     back() {
@@ -89,7 +87,7 @@ export default {
   <span class="back" v-on:click="back()">&#10799;</span>
   <button
     class="button circle play"
-    v-bind:disabled="timeLeft > 0"
+    v-bind:disabled="(timeLeft > 0 || lives == 0)"
     v-on:click="start()"
   ></button>
   <input
