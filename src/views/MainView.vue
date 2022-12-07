@@ -13,6 +13,7 @@ export default {
   },
   data() {
     return {
+      speech: undefined,
       lives: 3,
       score: 0,
       error: false,
@@ -22,12 +23,23 @@ export default {
       timeLeft: 0,
     };
   },
+  mounted() {
+      this.speech = new SpeechSynthesisUtterance();
+      this.speech.volume = 100;
+      this.speech.rate = 1;
+      this.speech.pitch = 1;
+      this.speech.voice = getVoice(this.voice);
+
+      this.speech.onend = (event) => {
+        this.tick();
+        this.intervalId = setInterval(this.tick, 1000);
+      };
+  },
   methods: {
     tick() {
       if (--this.timeLeft == 0) {
         this.lives--;
         this.error = true;
-        this.guess = "";
         setTimeout(() => (this.error = false), 500);
         clearInterval(this.intervalId);
 
@@ -51,19 +63,9 @@ export default {
       return number;
     },
     start() {
-      const msg = new SpeechSynthesisUtterance();
-      msg.text = this.number = this.getNumber();
-      msg.volume = 100;
-      msg.rate = 1;
-      msg.pitch = 1;
-      msg.voice = getVoice(this.voice);
+      this.speech.text = this.number = this.getNumber();
+      speechSynthesis.speak(this.speech);
 
-      msg.onend = (event) => {
-        this.tick();
-        this.intervalId = setInterval(this.tick, 1000);
-      };
-
-      speechSynthesis.speak(msg);
       this.timeLeft = 6;
       this.$nextTick(() => setFocus(this.$refs.input));
     },
