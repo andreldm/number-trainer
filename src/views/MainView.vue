@@ -37,14 +37,13 @@ export default {
       }
     },
     getNumber() {
-      const max =
-        this.mode == "easy"
-          ? 99
-          : this.mode == "medium"
-          ? 999
-          : this.mode == "hard"
-          ? 9999
-          : 99;
+      const max = (() => {
+        switch (this.mode) {
+          case "easy": return 99;
+          case "medium": return 999;
+          case "hard": return 9999;
+          default: return 99;
+        }})();
 
       const number = Math.floor(Math.random() * max);
       console.log(number);
@@ -81,11 +80,7 @@ export default {
     },
     back() {
       clearInterval(this.intervalId);
-      if (this.score > 0) {
-        this.$router.push(`/gameover/${this.score}`);
-      } else {
-        this.$router.push("/");
-      }
+      this.$router.push(this.score > 0 ? `/gameover/${this.score}` : '/');
     },
   },
 };
