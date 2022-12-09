@@ -58,7 +58,7 @@ export default {
   </span>
 
   <select class="select" v-model="voice" label="labels">
-    <option disabled value="">Please select voice</option>
+    <option disabled value="">{{ voices.length == 0 ? "Loading voices..." : "Please select voice" }}</option>
     <option v-for="v in voices" v-bind:value="v.name">
       {{ v.name }} ({{ v.lang }})
     </option>
