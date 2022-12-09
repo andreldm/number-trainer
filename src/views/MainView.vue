@@ -84,7 +84,7 @@ export default {
 
 <template>
   <Lives :lives="lives" />
-  <span class="back" v-on:click="back()">&#10799;</span>
+  <span class="back" v-on:click="back()"></span>
   <button
     class="button circle play"
     v-bind:disabled="(timeLeft > 0 || lives == 0)"
@@ -112,42 +112,16 @@ export default {
 
 <style>
 .back {
+  background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjxzdmcKICAgdmVyc2lvbj0iMS4xIgogICBoZWlnaHQ9IjMwIgogICB3aWR0aD0iMjkuOTk5OTk4IgogICBpZD0ic3ZnMTMiCiAgIHNvZGlwb2RpOmRvY25hbWU9ImNyb3NzLnN2ZyIKICAgaW5rc2NhcGU6dmVyc2lvbj0iMS4yLjIgKGIwYTg0ODY1NDEsIDIwMjItMTItMDEpIgogICB4bWxuczppbmtzY2FwZT0iaHR0cDovL3d3dy5pbmtzY2FwZS5vcmcvbmFtZXNwYWNlcy9pbmtzY2FwZSIKICAgeG1sbnM6c29kaXBvZGk9Imh0dHA6Ly9zb2RpcG9kaS5zb3VyY2Vmb3JnZS5uZXQvRFREL3NvZGlwb2RpLTAuZHRkIgogICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCiAgIHhtbG5zOnN2Zz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxzb2RpcG9kaTpuYW1lZHZpZXcKICAgICBpZD0ibmFtZWR2aWV3MTUiCiAgICAgcGFnZWNvbG9yPSIjZmZmZmZmIgogICAgIGJvcmRlcmNvbG9yPSIjNjY2NjY2IgogICAgIGJvcmRlcm9wYWNpdHk9IjEuMCIKICAgICBpbmtzY2FwZTpzaG93cGFnZXNoYWRvdz0iMiIKICAgICBpbmtzY2FwZTpwYWdlb3BhY2l0eT0iMC4wIgogICAgIGlua3NjYXBlOnBhZ2VjaGVja2VyYm9hcmQ9IjAiCiAgICAgaW5rc2NhcGU6ZGVza2NvbG9yPSIjZDFkMWQxIgogICAgIHNob3dncmlkPSJmYWxzZSIKICAgICBpbmtzY2FwZTp6b29tPSIxOS43NDQyMTIiCiAgICAgaW5rc2NhcGU6Y3g9IjcuNjk4NDU4OCIKICAgICBpbmtzY2FwZTpjeT0iMTUuNTc0MTg1IgogICAgIGlua3NjYXBlOndpbmRvdy13aWR0aD0iMTkyMCIKICAgICBpbmtzY2FwZTp3aW5kb3ctaGVpZ2h0PSIxMDYwIgogICAgIGlua3NjYXBlOndpbmRvdy14PSIwIgogICAgIGlua3NjYXBlOndpbmRvdy15PSIwIgogICAgIGlua3NjYXBlOndpbmRvdy1tYXhpbWl6ZWQ9IjEiCiAgICAgaW5rc2NhcGU6Y3VycmVudC1sYXllcj0ic3ZnMTMiIC8+CiAgPGRlZnMKICAgICBpZD0iZGVmczciPgogICAgPHN0eWxlCiAgICAgICB0eXBlPSJ0ZXh0L2NzcyIKICAgICAgIGlkPSJzdHlsZTIiPjwhW0NEQVRBWwogICAgLm91dGxpbmUgeyBzdHJva2U6bm9uZTsgc3Ryb2tlLXdpZHRoOjAgfQogIF1dPjwvc3R5bGU+CiAgICA8ZwogICAgICAgaWQ9ImhlYXJ0Ij4KICAgICAgPHBhdGgKICAgICAgICAgZD0iTSAwLDIwMCBWIDAgaCAyMDAgYSAxMDAsMTAwIDkwIDAgMSAwLDIwMCAxMDAsMTAwIDkwIDAgMSAtMjAwLDAgeiIKICAgICAgICAgaWQ9InBhdGg0IiAvPgogICAgPC9nPgogIDwvZGVmcz4KICA8cGF0aAogICAgIHN0eWxlPSJmaWxsOiMzMzMzMzM7c3Ryb2tlOiMzMzMzMzM7c3Ryb2tlLXdpZHRoOjYuODY5MDg7c3Ryb2tlLWxpbmVjYXA6YnV0dDtzdHJva2UtbGluZWpvaW46YmV2ZWw7c3Ryb2tlLWRhc2hhcnJheTpub25lO3N0cm9rZS1vcGFjaXR5OjE7cGFpbnQtb3JkZXI6c3Ryb2tlIGZpbGwgbWFya2VycyIKICAgICBkPSJNIDIuNDI4NTgxLDIuNDI4NTkyMSAyNy41NzE0MTksMjcuNTcxMzE1IgogICAgIGlkPSJwYXRoMTU1NiIgLz4KICA8cGF0aAogICAgIHN0eWxlPSJmaWxsOiMzMzMzMzM7c3Ryb2tlOiMzMzMzMzM7c3Ryb2tlLXdpZHRoOjYuODY5MDg7c3Ryb2tlLWxpbmVjYXA6YnV0dDtzdHJva2UtbGluZWpvaW46YmV2ZWw7c3Ryb2tlLWRhc2hhcnJheTpub25lO3N0cm9rZS1vcGFjaXR5OjE7cGFpbnQtb3JkZXI6c3Ryb2tlIGZpbGwgbWFya2VycyIKICAgICBkPSJNIDI3LjU3MTQxOSwyLjQyODU5MjEgMi40Mjg1ODEsMjcuNTcxMzE1IgogICAgIGlkPSJwYXRoMTU1Ni0zIiAvPgo8L3N2Zz4K");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 1.6rem;
+  height: 1.5rem;
+  margin-top: 1rem;
   cursor: pointer;
-  display: inline-block;
   position: absolute;
   top: 0;
   right: 0;
-  font-size: 2.4rem;
-  font-weight: 600;
-  color: #444;
-}
-
-.hearts {
-  display: inline-block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  margin-top: 1rem;
-}
-
-.heart {
-  background-image: url("data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjI3LjQyNiIgd2lkdGg9IjMwIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4gPGRlZnM+IDxsaW5lYXJHcmFkaWVudCBpZD0iYSI+IDxzdG9wIHN0eWxlPSJzdG9wLWNvbG9yOiNiYTAwMDA7c3RvcC1vcGFjaXR5OjEiIG9mZnNldD0iMCIvPiA8c3RvcCBzdHlsZT0ic3RvcC1jb2xvcjpyZWQ7c3RvcC1vcGFjaXR5OjEiIG9mZnNldD0iMSIvPiA8L2xpbmVhckdyYWRpZW50PiA8bGluZWFyR3JhZGllbnQgeGxpbms6aHJlZj0iI2EiIGlkPSJjIiB4MT0iMTUzLjk2OSIgeTE9Ii00NS4wNjYiIHgyPSIxMjEuNjIyIiB5Mj0iMTc3LjMiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiBzcHJlYWRNZXRob2Q9InBhZCIvPiA8cGF0aCBkPSJNMCAyMDBWMGgyMDBhMTAwIDEwMCA5MCAwIDEgMCAyMDAgMTAwIDEwMCA5MCAwIDEtMjAwIDB6IiBpZD0iYiIvPiA8L2RlZnM+IDx1c2UgeGxpbms6aHJlZj0iI2IiIGZpbGw9InJlZCIgdHJhbnNmb3JtPSJyb3RhdGUoLTEzNC45OTkgMTMuMTggMTAuNjA3KSBzY2FsZSguMDg3ODcpIiBzdHlsZT0iZmlsbC1vcGFjaXR5OjE7ZmlsbDp1cmwoI2MpO3N0cm9rZTpub25lO3N0cm9rZS13aWR0aDowIi8+IDwvc3ZnPg==");
-  width: 1.6rem;
-  height: 1.5rem;
-  margin: 0.1rem;
-  background-size: contain;
-  background-repeat: no-repeat;
-  display: inline-block;
-}
-.heart.broken {
-  animation: shake 0.8s;
-  transform: translate(0, 0);
-
-  -webkit-transition: filter 0.8s ease-out;
-  -moz-transition: filter 0.8s ease-out;
-  -o-transition: filter 0.8s ease-out;
-  transition: filter 0.8s ease-out;
-  filter: grayscale(100%) brightness(350%);
 }
 
 .score {
