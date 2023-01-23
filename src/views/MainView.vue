@@ -41,6 +41,7 @@ export default {
       this.speech.rate = 1;
       this.speech.pitch = 1;
       this.speech.voice = getVoice(this.voice);
+      this.speech.lang = this.speech.voice.lang;
 
       this.speech.onend = (event) => {
         this.tick();
