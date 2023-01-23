@@ -19,6 +19,7 @@ export default {
       error: false,
       maxNumber: undefined,
       number: undefined,
+      numbers: [],
       guess: undefined,
       intervalId: undefined,
       timeLeft: 0,
@@ -59,7 +60,7 @@ export default {
     start() {
       this.guess = '';
       this.error = false;
-      this.speech.text = this.number = Math.floor(Math.random() * this.maxNumber);
+      this.speech.text = this.number = this.getNumber();
       console.log(this.number);
 
       speechSynthesis.speak(this.speech);
@@ -77,6 +78,15 @@ export default {
     back() {
       clearInterval(this.intervalId);
       this.$router.push(this.score > 0 ? `/gameover/${this.score}` : '/');
+    },
+    getNumber() {
+      if (this.numbers.length == 0) {
+        this.numbers = [...Array(this.maxNumber + 1).keys()]
+          .map(value => ({ value, sort: Math.random() }))
+          .sort((a, b) => a.sort - b.sort)
+          .map(({ value }) => value);
+      }
+      return this.numbers.pop();
     },
   },
 };
