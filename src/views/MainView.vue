@@ -57,7 +57,7 @@ export default {
         setTimeout(() => (this.$router.push(`/gameover/${this.score}`)), 3000);
       }
     },
-    start(focusInput) {
+    start() {
       this.guess = '';
       this.error = false;
       this.speech.text = this.number = this.getNumber();
@@ -66,18 +66,15 @@ export default {
       speechSynthesis.speak(this.speech);
 
       this.timeLeft = 6;
-      if (focusInput) {
-        this.$nextTick(() => {
-          setFocus(this.$refs.input);
-        });
-      }
+      this.$nextTick(() => setFocus(this.$refs.input));
+      setTimeout(() => window.scrollTo(0, 0), 200);
     },
     check() {
       if (this.guess != this.number) return;
 
       clearInterval(this.intervalId);
       this.score++;
-      this.start(false);
+      this.start();
     },
     back() {
       clearInterval(this.intervalId);
@@ -97,12 +94,14 @@ export default {
 </script>
 
 <template>
-  <Lives :lives="lives" />
-  <span class="back" v-on:click="back()"></span>
+  <span class="topbar">
+    <Lives :lives="lives" />
+    <span class="back" v-on:click="back()"></span>
+  </span>
   <button
     class="button circle play"
     v-bind:disabled="(timeLeft > 0 || lives == 0)"
-    v-on:click="start(true)"
+    v-on:click="start()"
   ></button>
   <input
     class="number-input"
@@ -136,6 +135,10 @@ export default {
   position: absolute;
   top: 0;
   right: 0;
+}
+
+.topbar {
+  margin-bottom: 6rem;
 }
 
 .score {

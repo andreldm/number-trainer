@@ -21,7 +21,6 @@ export default {
 
 <style>
 .title {
-  position: absolute;
   top: 0;
   margin-top: 3rem;
   padding: 0;
