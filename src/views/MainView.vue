@@ -1,11 +1,13 @@
 <script>
 import Lives from "../components/Lives.vue";
+import Score from "../components/Score.vue";
 import { getVoice, setFocus } from "../util.js";
 
 export default {
   name: "App",
   components: {
     Lives,
+    Score,
   },
   props: {
     mode: String,
@@ -96,6 +98,7 @@ export default {
 <template>
   <span class="topbar">
     <Lives :lives="lives" />
+    <Score :score="score" />
     <span class="back" v-on:click="back()"></span>
   </span>
   <button
@@ -120,7 +123,6 @@ export default {
     v-bind:value="timeLeft - 1"
     max="5"
   ></progress>
-  <div class="score" v-bind:class="{ hidden: score < 0 }">{{ score }}</div>
 </template>
 
 <style>
@@ -130,22 +132,17 @@ export default {
   background-repeat: no-repeat;
   width: 1.6rem;
   height: 1.5rem;
-  margin-top: 1rem;
   cursor: pointer;
-  position: absolute;
-  top: 0;
-  right: 0;
+  grid-column-start: 3;
 }
 
 .topbar {
-  margin-bottom: 6rem;
-}
-
-.score {
-  color: #42b7c4;
-  font-size: 2rem;
-  font-family: monospace;
-  font-weight: 600;
+  display: grid;
+  grid-template-columns: max-content auto max-content;
+  column-gap: 0.8rem;
+  margin-top: 1rem;
+  margin-bottom: 5rem;
+  width: 100%;
 }
 
 .button.circle {
