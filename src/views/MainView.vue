@@ -189,6 +189,9 @@ export default {
   transition: background-color 0.5s ease-out;
   background-color: #ffb3b3;
 }
+.number-input:disabled {
+  opacity: 100%; /* Safari dims the input when disabled */
+}
 
 .progress {
   min-width: 16rem;
