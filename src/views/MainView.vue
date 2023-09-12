@@ -25,6 +25,7 @@ export default {
       guess: undefined,
       intervalId: undefined,
       timeLeft: 0,
+      focusInput: false,
     };
   },
   mounted() {
@@ -44,7 +45,11 @@ export default {
       this.speech.lang = this.speech.voice.lang;
 
       this.speech.onend = (event) => {
-        this.tick();
+        clearInterval(this.intervalId);
+        if (this.focusInput) {
+          this.$nextTick(() => setFocus(this.$refs.input));
+        }
+        setTimeout(() => window.scrollTo(0, 0), 200);
         this.intervalId = setInterval(this.tick, 1000);
       };
   },
@@ -63,16 +68,12 @@ export default {
     start(focusInput) {
       this.guess = '';
       this.error = false;
+      this.focusInput = focusInput;
+      this.timeLeft = 5;
       this.speech.text = this.number = this.getNumber();
       console.log(this.number);
 
       speechSynthesis.speak(this.speech);
-
-      this.timeLeft = 6;
-      if (focusInput) {
-        this.$nextTick(() => setFocus(this.$refs.input));
-      }
-      setTimeout(() => window.scrollTo(0, 0), 200);
     },
     check() {
       if (this.guess != this.number) return;
@@ -123,7 +124,7 @@ export default {
   <progress
     class="progress"
     v-bind:class="{ hidden: timeLeft == 0 }"
-    v-bind:value="timeLeft - 1"
+    v-bind:value="timeLeft"
     max="5"
   ></progress>
 </template>
