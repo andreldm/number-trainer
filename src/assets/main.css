@@ -5,8 +5,13 @@
   40%, 60% { transform: translate(1px, 0); }
 }
 
+:root {
+  --primary-color: #2b97a3;
+  --primary-color-darker: #197b86;
+}
+
 body {
-  background-color: #9bff7a;
+  background-color: #fff;
   margin: 0;
   font-family: sans-serif;
   overflow: hidden;
@@ -31,11 +36,11 @@ body {
   border: none;
   border-radius: 0.3rem;
   outline: none;
-  background: #42b7c4;
+  background: var(--primary-color);
   color: #ffffff;
   padding: 0.5rem;
   min-width: 8rem;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 600;
 
   -webkit-transition: background-color 0.25s ease-out;
@@ -47,7 +52,8 @@ body {
 }
 
 .button:disabled {
-  background: #c0c0c0;
+  background: var(--primary-color);
+  filter: brightness(60%);
   cursor: not-allowed;
 }
 

@@ -17,7 +17,7 @@ export default {
 .score {
   display: inline-block;
   grid-column-start: 2;
-  color: #42b7c4;
+  color: var(--primary-color);
   font-size: 1.6rem;
   font-family: monospace;
   font-weight: 600;

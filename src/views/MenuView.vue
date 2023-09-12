@@ -78,13 +78,16 @@ export default {
   top: 0;
   margin-top: 3rem;
   padding: 0;
-  color: #42b7c4;
+  color: var(--primary-color);
   font-size: 2.4rem;
   font-weight: 600;
 }
 
-.button:hover:enabled {
-  background-color: #56d0dd;
+@media (hover: hover) and (pointer: fine) {
+  .button:hover:enabled {
+    background-color: var(--primary-color);
+    filter: brightness(120%);
+  }
 }
 .button-group .button {
   border-radius: 0;
@@ -101,7 +104,7 @@ export default {
   border-bottom-right-radius: 0.3rem;
 }
 .button-group .button.selected {
-  background-color: #2b97a3;
+  background-color: var(--primary-color-darker);
 }
 
 .small {
@@ -114,11 +117,13 @@ export default {
   -webkit-appearance: none;
   appearance: none;
   text-align-last:center;
-  border: 0.2rem solid #42b7c4;
+  border: 0.2rem solid var(--primary-color);
   border-radius: 0.3rem;
   padding: 0.25em 0.5em;
   font-size: 1.2rem;
   cursor: pointer;
-  background-color: #ffffff;
+  background-color: var(--primary-color);
+  color: #fff;
+  font-weight: 600;
 }
 </style>
