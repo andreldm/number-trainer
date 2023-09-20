@@ -5,7 +5,7 @@ export default {
   name: "Menu",
   data() {
     return {
-      mode: undefined,
+      mode: localStorage.getItem('last-selected-mode') || '',
       voice: localStorage.getItem('last-selected-voice') || '',
       voices: [],
     };
@@ -16,13 +16,11 @@ export default {
   methods: {
     start() {
       this.$router.push(`/main/${this.mode}/${this.voice}`);
-    },
-    setMode(mode) {
-      this.mode = mode;
-    },
+    }
   },
   watch: {
-    voice: (value) => { localStorage.setItem('last-selected-voice', value) }
+    voice: (value) => { localStorage.setItem('last-selected-voice', value) },
+    mode: (value) => { localStorage.setItem('last-selected-mode', value) }
   },
   computed: {
     bestScore() {
@@ -39,7 +37,7 @@ export default {
     <button
       class="button"
       v-bind:class="{ selected: mode == 'easy' }"
-      v-on:click="setMode('easy')"
+      v-on:click="this.mode = 'easy'"
     >
       <div>Easy</div>
       <div class="small">0-99</div>
@@ -47,7 +45,7 @@ export default {
     <button
       class="button"
       v-bind:class="{ selected: mode == 'medium' }"
-      v-on:click="setMode('medium')"
+      v-on:click="this.mode ='medium'"
     >
       <div>Medium</div>
       <div class="small">0-999</div>
@@ -55,7 +53,7 @@ export default {
     <button
       class="button"
       v-bind:class="{ selected: mode == 'hard' }"
-      v-on:click="setMode('hard')"
+      v-on:click="this.mode = 'hard'"
     >
       <div>Hard</div>
       <div class="small">0-9999</div>
