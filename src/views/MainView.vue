@@ -1,7 +1,7 @@
 <script>
 import Lives from "../components/Lives.vue";
 import Score from "../components/Score.vue";
-import { getVoice, setFocus } from "../util.js";
+import { getVoice, setFocus, saveScore } from "../util.js";
 
 export default {
   name: "App",
@@ -62,7 +62,10 @@ export default {
       this.error = true;
 
       if (--this.lives == 0) {
-        setTimeout(() => (this.$router.push(`/gameover/${this.score}`)), 3000);
+        setTimeout(() => {
+          saveScore(this.mode, this.voice, this.score);
+          this.$router.push(`/gameover/${this.score}`);
+        }, 3000);
       }
     },
     start(focusInput) {
@@ -84,6 +87,7 @@ export default {
     },
     back() {
       clearInterval(this.intervalId);
+      saveScore(this.mode, this.voice, this.score);
       this.$router.push(this.score > 0 ? `/gameover/${this.score}` : '/');
     },
     getNumber() {
@@ -197,7 +201,6 @@ export default {
 .progress {
   min-width: 16rem;
   border-width: 0.2rem;
-  color: var(--primary-color);
   background-color: #ffffff;
   border-style: solid;
   border-color: var(--primary-color);

@@ -1,5 +1,5 @@
 <script>
-import { getVoices } from "../util.js";
+import { getVoices, getScore } from "../util.js";
 
 export default {
   name: "Menu",
@@ -23,6 +23,11 @@ export default {
   },
   watch: {
     voice: (value) => { localStorage.setItem('last-selected-voice', value) }
+  },
+  computed: {
+    bestScore() {
+      return getScore(this.mode, this.voice);
+    }
   }
 };
 </script>
@@ -71,6 +76,8 @@ export default {
   >
     Start
   </button>
+
+  <div v-show="bestScore > 0">Best Score is {{ bestScore }}</div>
 </template>
 
 <style>
@@ -78,7 +85,6 @@ export default {
   top: 0;
   margin-top: 3rem;
   padding: 0;
-  color: var(--primary-color);
   font-size: 2.4rem;
   font-weight: 600;
 }

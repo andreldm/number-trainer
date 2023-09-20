@@ -10,8 +10,7 @@ Simple educational app to practice spoken number comprehension.
         - [x] Medium: 0-999
         - [x] Hard: 0-9999
         - [ ] Custom
-    - [ ] Top 3 scores for each mode
-        - [ ] Score per language
+    - [x] Best score for each mode per language
     - [x] Voice combobox
     - [ ] Settings in an accordion
         - [ ] Volume

@@ -24,14 +24,12 @@ export default {
   top: 0;
   margin-top: 3rem;
   padding: 0;
-  color: var(--primary-color);
   font-size: 2.4rem;
   font-weight: 600;
 }
 .subtitle {
   margin: 0;
   padding: 0;
-  color: var(--primary-color);
   font-size: 2rem;
   font-weight: 600;
 }
