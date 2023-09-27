@@ -1,6 +1,6 @@
 <script>
 export default {
-  name: "GameOver",
+  name: "GameOverView",
   props: {
     newScore: String,
     oldScore: String,

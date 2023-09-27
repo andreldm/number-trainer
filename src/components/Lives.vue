@@ -1,6 +1,6 @@
 <script>
 export default {
-  name: "Lives",
+  name: "LivesCounter",
   props: {
     lives: Number,
   },

@@ -8,7 +8,7 @@ import {
 } from "../persistence.js";
 
 export default {
-  name: "Preferences",
+  name: "PreferencesView",
   data() {
     return {
       mode: loadPreference(Keys.LAST_MODE, ""),
@@ -99,7 +99,7 @@ export default {
     <option disabled value="">
       {{ voices.length == 0 ? "Loading voices..." : "Please select voice" }}
     </option>
-    <option v-for="v in voices" v-bind:value="v.name">
+    <option v-for="v in voices" :key="v.name" v-bind:value="v.name">
       {{ v.name }} ({{ v.lang }})
     </option>
   </select>

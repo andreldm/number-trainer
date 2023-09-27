@@ -5,7 +5,7 @@ import { getVoice, setFocus } from "../util.js";
 import { Keys, loadScore, saveScore, loadPreference } from "../persistence.js";
 
 export default {
-  name: "App",
+  name: "MainView",
   components: {
     Lives,
     Score,
@@ -52,7 +52,7 @@ export default {
     this.speech.pitch = loadPreference(Keys.PREFERENCE_PITCH, 1);
     this.speech.voice = getVoice(this.voice);
     this.speech.lang = this.speech.voice.lang;
-    this.speech.onend = (event) => {
+    this.speech.onend = () => {
       clearInterval(this.intervalId);
       if (this.focusInput) {
         this.$nextTick(() => setFocus(this.$refs.input));

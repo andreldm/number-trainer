@@ -1,6 +1,6 @@
 <script>
 export default {
-  name: "Score",
+  name: "ScoreCounter",
   props: {
     score: Number,
     bestScore: Number,
