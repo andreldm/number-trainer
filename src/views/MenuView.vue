@@ -1,13 +1,13 @@
 <script>
 import { getVoices } from "../util.js";
-import { getScore } from "../persistance.js";
+import { Keys, loadScore, loadPreference, savePreference } from "../persistence.js";
 
 export default {
   name: "Menu",
   data() {
     return {
-      mode: localStorage.getItem('last-selected-mode') || '',
-      voice: localStorage.getItem('last-selected-voice') || '',
+      mode: loadPreference(Keys.LAST_MODE, ''),
+      voice: loadPreference(Keys.LAST_VOICE, ''),
       voices: [],
     };
   },
@@ -20,12 +20,12 @@ export default {
     }
   },
   watch: {
-    voice: (value) => { localStorage.setItem('last-selected-voice', value) },
-    mode: (value) => { localStorage.setItem('last-selected-mode', value) }
+    mode: (value) => { savePreference(Keys.LAST_MODE, value) },
+    voice: (value) => { savePreference(Keys.LAST_VOICE, value) },
   },
   computed: {
     bestScore() {
-      return getScore(this.mode, this.voice);
+      return loadScore(this.mode, this.voice);
     }
   }
 };

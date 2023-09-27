@@ -2,7 +2,7 @@
 import Lives from "../components/Lives.vue";
 import Score from "../components/Score.vue";
 import { getVoice, setFocus } from "../util.js";
-import { getScore, saveScore } from "../persistance.js";
+import { loadScore, saveScore } from "../persistence.js";
 
 export default {
   name: "App",
@@ -39,7 +39,7 @@ export default {
           default: return 99;
         }})();
 
-      this.bestScore = getScore(this.mode, this.voice);
+      this.bestScore = loadScore(this.mode, this.voice);
 
       this.speech = new SpeechSynthesisUtterance();
       this.speech.volume = 100;
