@@ -1,5 +1,6 @@
 import { createRouter, createMemoryHistory } from "vue-router";
 import MenuView from "../views/MenuView.vue";
+import PreferencesView from "../views/PreferencesView.vue";
 
 const router = createRouter({
   history: createMemoryHistory(import.meta.env.BASE_URL),
@@ -20,6 +21,11 @@ const router = createRouter({
       name: "main",
       props: true,
       component: () => import("../views/MainView.vue"),
+    },
+    {
+      path: "/preferences",
+      name: "preferences",
+      component: PreferencesView,
     },
   ],
 });

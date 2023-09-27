@@ -21,7 +21,7 @@ export default {
   <button class="button" v-on:click="menu()">Menu</button>
 </template>
 
-<style>
+<style scoped>
 .title {
   top: 0;
   margin-top: 3rem;

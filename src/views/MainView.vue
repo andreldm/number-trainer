@@ -2,7 +2,7 @@
 import Lives from "../components/Lives.vue";
 import Score from "../components/Score.vue";
 import { getVoice, setFocus } from "../util.js";
-import { loadScore, saveScore } from "../persistence.js";
+import { Keys, loadScore, saveScore, loadPreference } from "../persistence.js";
 
 export default {
   name: "App",
@@ -42,9 +42,9 @@ export default {
       this.bestScore = loadScore(this.mode, this.voice);
 
       this.speech = new SpeechSynthesisUtterance();
-      this.speech.volume = 100;
-      this.speech.rate = 1;
-      this.speech.pitch = 1;
+      this.speech.volume = loadPreference(Keys.PREFERENCE_VOLUME, 1);
+      this.speech.rate = loadPreference(Keys.PREFERENCE_RATE, 1);
+      this.speech.pitch = loadPreference(Keys.PREFERENCE_PITCH, 1);
       this.speech.voice = getVoice(this.voice);
       this.speech.lang = this.speech.voice.lang;
       this.speech.onend = (event) => {
@@ -136,7 +136,7 @@ export default {
   ></progress>
 </template>
 
-<style>
+<style scoped>
 .back {
   background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjxzdmcKICAgdmVyc2lvbj0iMS4xIgogICBoZWlnaHQ9IjMwIgogICB3aWR0aD0iMjkuOTk5OTk4IgogICBpZD0ic3ZnMTMiCiAgIHNvZGlwb2RpOmRvY25hbWU9ImNyb3NzLnN2ZyIKICAgaW5rc2NhcGU6dmVyc2lvbj0iMS4zICgwZTE1MGVkNmM0LCAyMDIzLTA3LTIxKSIKICAgeG1sbnM6aW5rc2NhcGU9Imh0dHA6Ly93d3cuaW5rc2NhcGUub3JnL25hbWVzcGFjZXMvaW5rc2NhcGUiCiAgIHhtbG5zOnNvZGlwb2RpPSJodHRwOi8vc29kaXBvZGkuc291cmNlZm9yZ2UubmV0L0RURC9zb2RpcG9kaS0wLmR0ZCIKICAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogICB4bWxuczpzdmc9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8c29kaXBvZGk6bmFtZWR2aWV3CiAgICAgaWQ9Im5hbWVkdmlldzE1IgogICAgIHBhZ2Vjb2xvcj0iI2ZmZmZmZiIKICAgICBib3JkZXJjb2xvcj0iIzY2NjY2NiIKICAgICBib3JkZXJvcGFjaXR5PSIxLjAiCiAgICAgaW5rc2NhcGU6c2hvd3BhZ2VzaGFkb3c9IjIiCiAgICAgaW5rc2NhcGU6cGFnZW9wYWNpdHk9IjAuMCIKICAgICBpbmtzY2FwZTpwYWdlY2hlY2tlcmJvYXJkPSIwIgogICAgIGlua3NjYXBlOmRlc2tjb2xvcj0iI2QxZDFkMSIKICAgICBzaG93Z3JpZD0iZmFsc2UiCiAgICAgaW5rc2NhcGU6em9vbT0iMTkuNzQ0MjEyIgogICAgIGlua3NjYXBlOmN4PSI3LjcyMzc4MjUiCiAgICAgaW5rc2NhcGU6Y3k9IjE1LjU5OTUwOCIKICAgICBpbmtzY2FwZTp3aW5kb3ctd2lkdGg9IjE5MjAiCiAgICAgaW5rc2NhcGU6d2luZG93LWhlaWdodD0iMTA2MCIKICAgICBpbmtzY2FwZTp3aW5kb3cteD0iMCIKICAgICBpbmtzY2FwZTp3aW5kb3cteT0iMCIKICAgICBpbmtzY2FwZTp3aW5kb3ctbWF4aW1pemVkPSIxIgogICAgIGlua3NjYXBlOmN1cnJlbnQtbGF5ZXI9InN2ZzEzIiAvPgogIDxkZWZzCiAgICAgaWQ9ImRlZnM3Ij4KICAgIDxzdHlsZQogICAgICAgdHlwZT0idGV4dC9jc3MiCiAgICAgICBpZD0ic3R5bGUyIj48IVtDREFUQVsKICAgIC5vdXRsaW5lIHsgc3Ryb2tlOm5vbmU7IHN0cm9rZS13aWR0aDowIH0KICBdXT48L3N0eWxlPgogICAgPGcKICAgICAgIGlkPSJoZWFydCI+CiAgICAgIDxwYXRoCiAgICAgICAgIGQ9Ik0gMCwyMDAgViAwIGggMjAwIGEgMTAwLDEwMCA5MCAwIDEgMCwyMDAgMTAwLDEwMCA5MCAwIDEgLTIwMCwwIHoiCiAgICAgICAgIGlkPSJwYXRoNCIgLz4KICAgIDwvZz4KICA8L2RlZnM+CiAgPHBhdGgKICAgICBzdHlsZT0iZmlsbDojMzMzMzMzO3N0cm9rZTojMmI5N2EzO3N0cm9rZS13aWR0aDo2Ljg2OTA4O3N0cm9rZS1saW5lY2FwOmJ1dHQ7c3Ryb2tlLWxpbmVqb2luOmJldmVsO3N0cm9rZS1kYXNoYXJyYXk6bm9uZTtzdHJva2Utb3BhY2l0eToxO3BhaW50LW9yZGVyOnN0cm9rZSBmaWxsIG1hcmtlcnMiCiAgICAgZD0iTSAyLjQyODU4MSwyLjQyODU5MjEgMjcuNTcxNDE5LDI3LjU3MTMxNSIKICAgICBpZD0icGF0aDE1NTYiIC8+CiAgPHBhdGgKICAgICBzdHlsZT0iZmlsbDojMzMzMzMzO3N0cm9rZTojMmI5N2EzO3N0cm9rZS13aWR0aDo2Ljg2OTA4O3N0cm9rZS1saW5lY2FwOmJ1dHQ7c3Ryb2tlLWxpbmVqb2luOmJldmVsO3N0cm9rZS1kYXNoYXJyYXk6bm9uZTtzdHJva2Utb3BhY2l0eToxO3BhaW50LW9yZGVyOnN0cm9rZSBmaWxsIG1hcmtlcnMiCiAgICAgZD0iTSAyNy41NzE0MTksMi40Mjg1OTIxIDIuNDI4NTgxLDI3LjU3MTMxNSIKICAgICBpZD0icGF0aDE1NTYtMyIgLz4KPC9zdmc+Cg==");
   background-size: contain;
