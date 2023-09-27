@@ -8,5 +8,5 @@ export function saveScore(mode, voice, score) {
 
 export function getScore(mode, voice) {
   const key = `best-score-${mode}-${voice}`;
-  return localStorage.getItem(key) || 0;
+  return parseInt(localStorage.getItem(key), 10) || 0;
 }

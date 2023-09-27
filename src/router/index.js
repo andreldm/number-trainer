@@ -10,7 +10,7 @@ const router = createRouter({
       component: MenuView,
     },
     {
-      path: "/gameover/:score",
+      path: "/gameover/:newScore/:oldScore",
       name: "gameover",
       props: true,
       component: () => import("../views/GameOverView.vue"),

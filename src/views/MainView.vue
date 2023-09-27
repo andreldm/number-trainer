@@ -2,7 +2,7 @@
 import Lives from "../components/Lives.vue";
 import Score from "../components/Score.vue";
 import { getVoice, setFocus } from "../util.js";
-import { saveScore } from "../persistance.js";
+import { getScore, saveScore } from "../persistance.js";
 
 export default {
   name: "App",
@@ -19,6 +19,7 @@ export default {
       speech: undefined,
       lives: 3,
       score: 0,
+      bestScore: 0,
       error: false,
       maxNumber: undefined,
       number: undefined,
@@ -38,13 +39,14 @@ export default {
           default: return 99;
         }})();
 
+      this.bestScore = getScore(this.mode, this.voice);
+
       this.speech = new SpeechSynthesisUtterance();
       this.speech.volume = 100;
       this.speech.rate = 1;
       this.speech.pitch = 1;
       this.speech.voice = getVoice(this.voice);
       this.speech.lang = this.speech.voice.lang;
-
       this.speech.onend = (event) => {
         clearInterval(this.intervalId);
         if (this.focusInput) {
@@ -65,7 +67,7 @@ export default {
       if (--this.lives == 0) {
         setTimeout(() => {
           saveScore(this.mode, this.voice, this.score);
-          this.$router.push(`/gameover/${this.score}`);
+          this.$router.push(`/gameover/${this.score}/${this.bestScore}`);
         }, 3000);
       }
     },
@@ -89,7 +91,7 @@ export default {
     back() {
       clearInterval(this.intervalId);
       saveScore(this.mode, this.voice, this.score);
-      this.$router.push(this.score > 0 ? `/gameover/${this.score}` : '/');
+      this.$router.push(this.score > 0 ? `/gameover/${this.score}/${this.bestScore}` : '/');
     },
     getNumber() {
       if (this.numbers.length == 0) {
@@ -107,7 +109,7 @@ export default {
 <template>
   <span class="topbar">
     <Lives :lives="lives" />
-    <Score :score="score" />
+    <Score :score="score" :bestScore="bestScore" />
     <span class="back" v-on:click="back()"></span>
   </span>
   <button
