@@ -1,7 +1,8 @@
 <script>
 import Lives from "../components/Lives.vue";
 import Score from "../components/Score.vue";
-import { getVoice, setFocus, saveScore } from "../util.js";
+import { getVoice, setFocus } from "../util.js";
+import { saveScore } from "../persistance.js";
 
 export default {
   name: "App",

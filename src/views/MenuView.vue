@@ -1,5 +1,6 @@
 <script>
-import { getVoices, getScore } from "../util.js";
+import { getVoices } from "../util.js";
+import { getScore } from "../persistance.js";
 
 export default {
   name: "Menu",
