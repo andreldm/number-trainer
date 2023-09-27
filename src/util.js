@@ -17,7 +17,7 @@ function sortVoices(voices) {
 export function getVoices(callback) {
   const voices = speechSynthesis.getVoices();
 
-  if (typeof voices !== 'undefined' && voices.length > 0) {
+  if (typeof voices !== "undefined" && voices.length > 0) {
     callback(sortVoices(voices));
   }
 

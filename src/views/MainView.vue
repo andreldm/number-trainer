@@ -31,30 +31,35 @@ export default {
     };
   },
   mounted() {
-      this.maxNumber = (() => {
-        switch (this.mode) {
-          case "easy": return 99;
-          case "medium": return 999;
-          case "hard": return 9999;
-          default: return 99;
-        }})();
+    this.maxNumber = (() => {
+      switch (this.mode) {
+        case "easy":
+          return 99;
+        case "medium":
+          return 999;
+        case "hard":
+          return 9999;
+        default:
+          return 99;
+      }
+    })();
 
-      this.bestScore = loadScore(this.mode, this.voice);
+    this.bestScore = loadScore(this.mode, this.voice);
 
-      this.speech = new SpeechSynthesisUtterance();
-      this.speech.volume = loadPreference(Keys.PREFERENCE_VOLUME, 1);
-      this.speech.rate = loadPreference(Keys.PREFERENCE_RATE, 1);
-      this.speech.pitch = loadPreference(Keys.PREFERENCE_PITCH, 1);
-      this.speech.voice = getVoice(this.voice);
-      this.speech.lang = this.speech.voice.lang;
-      this.speech.onend = (event) => {
-        clearInterval(this.intervalId);
-        if (this.focusInput) {
-          this.$nextTick(() => setFocus(this.$refs.input));
-        }
-        setTimeout(() => window.scrollTo(0, 0), 200);
-        this.intervalId = setInterval(this.tick, 1000);
-      };
+    this.speech = new SpeechSynthesisUtterance();
+    this.speech.volume = loadPreference(Keys.PREFERENCE_VOLUME, 1);
+    this.speech.rate = loadPreference(Keys.PREFERENCE_RATE, 1);
+    this.speech.pitch = loadPreference(Keys.PREFERENCE_PITCH, 1);
+    this.speech.voice = getVoice(this.voice);
+    this.speech.lang = this.speech.voice.lang;
+    this.speech.onend = (event) => {
+      clearInterval(this.intervalId);
+      if (this.focusInput) {
+        this.$nextTick(() => setFocus(this.$refs.input));
+      }
+      setTimeout(() => window.scrollTo(0, 0), 200);
+      this.intervalId = setInterval(this.tick, 1000);
+    };
   },
   methods: {
     tick() {
@@ -72,7 +77,7 @@ export default {
       }
     },
     start(focusInput) {
-      this.guess = '';
+      this.guess = "";
       this.error = false;
       this.focusInput = focusInput;
       this.timeLeft = 5;
@@ -91,12 +96,14 @@ export default {
     back() {
       clearInterval(this.intervalId);
       saveScore(this.mode, this.voice, this.score);
-      this.$router.push(this.score > 0 ? `/gameover/${this.score}/${this.bestScore}` : '/');
+      this.$router.push(
+        this.score > 0 ? `/gameover/${this.score}/${this.bestScore}` : "/"
+      );
     },
     getNumber() {
       if (this.numbers.length == 0) {
         this.numbers = [...Array(this.maxNumber + 1).keys()]
-          .map(value => ({ value, sort: Math.random() }))
+          .map((value) => ({ value, sort: Math.random() }))
           .sort((a, b) => a.sort - b.sort)
           .map(({ value }) => value);
       }
@@ -114,7 +121,7 @@ export default {
   </span>
   <button
     class="button circle play"
-    v-bind:disabled="(timeLeft > 0 || lives == 0)"
+    v-bind:disabled="timeLeft > 0 || lives == 0"
     v-on:click="start(true)"
   ></button>
   <input
@@ -217,7 +224,14 @@ export default {
   -o-transition: opacity 0.25s ease-out;
   transition: opacity 0.25s ease-out;
 }
-.progress::-moz-progress-bar { background: var(--primary-color); }
-.progress::-webkit-progress-bar { background: #ffffff; border-radius: 0.8rem; }
-.progress::-webkit-progress-value { background: var(--primary-color); }
+.progress::-moz-progress-bar {
+  background: var(--primary-color);
+}
+.progress::-webkit-progress-bar {
+  background: #ffffff;
+  border-radius: 0.8rem;
+}
+.progress::-webkit-progress-value {
+  background: var(--primary-color);
+}
 </style>

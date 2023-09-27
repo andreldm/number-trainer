@@ -1,18 +1,23 @@
 <script>
 import { getVoices } from "../util.js";
-import { Keys, loadScore, loadPreference, savePreference } from "../persistence.js";
+import {
+  Keys,
+  loadScore,
+  loadPreference,
+  savePreference,
+} from "../persistence.js";
 
 export default {
   name: "Menu",
   data() {
     return {
-      mode: loadPreference(Keys.LAST_MODE, ''),
-      voice: loadPreference(Keys.LAST_VOICE, ''),
+      mode: loadPreference(Keys.LAST_MODE, ""),
+      voice: loadPreference(Keys.LAST_VOICE, ""),
       voices: [],
     };
   },
   mounted() {
-    getVoices(voices => this.voices = voices);
+    getVoices((voices) => (this.voices = voices));
   },
   methods: {
     start() {
@@ -20,17 +25,21 @@ export default {
     },
     preferences() {
       this.$router.push(`/preferences`);
-    }
+    },
   },
   watch: {
-    mode: (value) => { savePreference(Keys.LAST_MODE, value) },
-    voice: (value) => { savePreference(Keys.LAST_VOICE, value) },
+    mode: (value) => {
+      savePreference(Keys.LAST_MODE, value);
+    },
+    voice: (value) => {
+      savePreference(Keys.LAST_VOICE, value);
+    },
   },
   computed: {
     bestScore() {
       return loadScore(this.mode, this.voice);
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -50,7 +59,7 @@ export default {
     <button
       class="button"
       v-bind:class="{ selected: mode == 'medium' }"
-      v-on:click="this.mode ='medium'"
+      v-on:click="this.mode = 'medium'"
     >
       <div>Medium</div>
       <div class="small">0-999</div>
@@ -66,7 +75,9 @@ export default {
   </span>
 
   <select class="select" v-model="voice" label="labels">
-    <option disabled value="">{{ voices.length == 0 ? "Loading voices..." : "Please select voice" }}</option>
+    <option disabled value="">
+      {{ voices.length == 0 ? "Loading voices..." : "Please select voice" }}
+    </option>
     <option v-for="v in voices" v-bind:value="v.name">
       {{ v.name }} ({{ v.lang }})
     </option>
@@ -125,7 +136,7 @@ export default {
   max-width: 18rem;
   -webkit-appearance: none;
   appearance: none;
-  text-align-last:center;
+  text-align-last: center;
   border: 0.2rem solid var(--primary-color);
   border-radius: 0.3rem;
   padding: 0.25em 0.5em;

@@ -1,13 +1,18 @@
 <script>
 import { getVoices, getVoice } from "../util.js";
-import { Keys, loadPreference, savePreference, resetScores } from "../persistence.js";
+import {
+  Keys,
+  loadPreference,
+  savePreference,
+  resetScores,
+} from "../persistence.js";
 
 export default {
   name: "Preferences",
   data() {
     return {
-      mode: loadPreference(Keys.LAST_MODE, ''),
-      voice: loadPreference(Keys.LAST_VOICE, ''),
+      mode: loadPreference(Keys.LAST_MODE, ""),
+      voice: loadPreference(Keys.LAST_VOICE, ""),
       voices: [],
       speech: undefined,
       volume: loadPreference(Keys.PREFERENCE_VOLUME, 1),
@@ -16,7 +21,7 @@ export default {
     };
   },
   mounted() {
-    getVoices(voices => {
+    getVoices((voices) => {
       this.voices = voices;
 
       this.speech = new SpeechSynthesisUtterance();
@@ -46,13 +51,19 @@ export default {
     },
     cancel() {
       this.$router.push(`/`);
-    }
+    },
   },
   watch: {
-    volume: function (value) { this.speech.volume = value; },
-    rate: function (value) { this.speech.rate = value; },
-    pitch: function (value) { this.speech.pitch = value ; },
-  }
+    volume: function (value) {
+      this.speech.volume = value;
+    },
+    rate: function (value) {
+      this.speech.rate = value;
+    },
+    pitch: function (value) {
+      this.speech.pitch = value;
+    },
+  },
 };
 </script>
 
@@ -61,34 +72,49 @@ export default {
 
   <div class="range-group">
     <label for="volume">Volume</label>
-    <input type="range" id="volume" min="0" max="1" step="0.1" v-model="volume"/>
+    <input
+      type="range"
+      id="volume"
+      min="0"
+      max="1"
+      step="0.1"
+      v-model="volume"
+    />
 
     <label for="rate">Rate</label>
-    <input type="range" id="rate" min="0.1" max="10" step="0.1" v-model="rate"/>
+    <input
+      type="range"
+      id="rate"
+      min="0.1"
+      max="10"
+      step="0.1"
+      v-model="rate"
+    />
 
     <label for="pitch">Pitch</label>
-    <input type="range" id="pitch" min="0" max="2" step="0.1" v-model="pitch"/>
+    <input type="range" id="pitch" min="0" max="2" step="0.1" v-model="pitch" />
   </div>
 
   <select class="select" v-model="voice" label="labels">
-    <option disabled value="">{{ voices.length == 0 ? "Loading voices..." : "Please select voice" }}</option>
+    <option disabled value="">
+      {{ voices.length == 0 ? "Loading voices..." : "Please select voice" }}
+    </option>
     <option v-for="v in voices" v-bind:value="v.name">
       {{ v.name }} ({{ v.lang }})
     </option>
   </select>
   <button class="button" v-on:click="test()">Test</button>
 
-  <br>
+  <br />
 
   <button class="button" v-on:click="resetScores()">Reset Scores</button>
 
-  <br>
+  <br />
 
   <span class="button-group">
     <button class="button" v-on:click="save()">Save</button>
     <button class="button" v-on:click="cancel()">Cancel</button>
   </span>
-  
 </template>
 
 <style scoped>
@@ -126,7 +152,7 @@ br {
   max-width: 18rem;
   -webkit-appearance: none;
   appearance: none;
-  text-align-last:center;
+  text-align-last: center;
   border: 0.2rem solid var(--primary-color);
   border-radius: 0.3rem;
   padding: 0.25em 0.5em;

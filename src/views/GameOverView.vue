@@ -17,7 +17,9 @@ export default {
   <h1 class="title">Game Over</h1>
   <div class="subtitle">Your score was</div>
   <div class="score">{{ newScore }}</div>
-  <div class="message" v-show="newScore > oldScore">&#x1F389; Congratulations new record &#x1F389;</div>
+  <div class="message" v-show="newScore > oldScore">
+    &#x1F389; Congratulations new record &#x1F389;
+  </div>
   <button class="button" v-on:click="menu()">Menu</button>
 </template>
 

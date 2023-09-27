@@ -1,10 +1,10 @@
 export const Keys = {
-  LAST_MODE: 'last-selected-mode',
-  LAST_VOICE: 'last-selected-voice',
-  PREFERENCE_VOLUME: 'preference-volume',
-  PREFERENCE_RATE: 'preference-rate',
-  PREFERENCE_PITCH: 'preference-pitch',
-}
+  LAST_MODE: "last-selected-mode",
+  LAST_VOICE: "last-selected-voice",
+  PREFERENCE_VOLUME: "preference-volume",
+  PREFERENCE_RATE: "preference-rate",
+  PREFERENCE_PITCH: "preference-pitch",
+};
 
 export function loadPreference(key, defaultValue) {
   return localStorage.getItem(key) || defaultValue;
@@ -29,6 +29,6 @@ export function loadScore(mode, voice) {
 
 export function resetScores() {
   Object.keys(localStorage)
-    .filter(x => x.startsWith('best-score'))
-    .forEach(x => localStorage.removeItem(x));
+    .filter((x) => x.startsWith("best-score"))
+    .forEach((x) => localStorage.removeItem(x));
 }
