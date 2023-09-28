@@ -9,7 +9,20 @@ export default defineConfig({
   base: "/number-trainer/",
   plugins: [
     vue(),
-    VitePWA({ registerType: 'autoUpdate', injectRegister: 'auto' })],
+    VitePWA({
+      registerType: 'autoUpdate',
+      injectRegister: 'auto',
+      manifest: {
+        icons: [
+          {
+            src: "/assets/icon.svg",
+            sizes: "any",
+            type: "image/svg+xml",
+            purpose: "any maskable",
+          },
+        ]
+      }
+    })],
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),
