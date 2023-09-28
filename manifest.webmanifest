@@ -1,1 +1,1 @@
-{"name":"number-trainer","short_name":"number-trainer","start_url":"/number-trainer/","display":"standalone","background_color":"#ffffff","lang":"en","scope":"/number-trainer/"}
+{"name":"number-trainer","short_name":"number-trainer","start_url":"/number-trainer/","display":"standalone","background_color":"#ffffff","lang":"en","scope":"/number-trainer/","icons":[{"src":"/assets/icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]}
